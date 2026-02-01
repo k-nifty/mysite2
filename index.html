@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ゆうこく連合</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Noto Sans JP", sans-serif;
+    background: #0f1e2d;
+    color: white;
+    overflow: hidden; /* ← 縦スクロール殺す */
+  }
+
+  .page {
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 32px 24px;
+    box-sizing: border-box;
+  }
+
+  .page.active {
+    display: flex;
+  }
+
+  h1, h2 {
+    margin-top: 0;
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  .nav {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  button {
+    background: #1f4fd8;
+    border: none;
+    color: white;
+    padding: 14px 22px;
+    font-size: 16px;
+    border-radius: 8px;
+  }
+
+  button.secondary {
+    background: #555;
+  }
+
+  .card {
+    background: rgba(255,255,255,0.08);
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+  }
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<section class="page active" id="page-1">
+  <div class="center">
+    <h1>ゆうこく連合</h1>
+    <p>日本独立・日本再興・日本救世</p>
+  </div>
+
+  <div class="center">
+    <button onclick="nextPage()">次へ ▶</button>
+  </div>
+</section>
+
+<!-- PAGE 2 -->
+<section class="page" id="page-2">
+  <div>
+    <h2>主な経緯</h2>
+    <div class="card">2025年｜原口一博を中心に設立</div>
+    <div class="card">2026年1月｜河村たかしらと合流、政党要件達成</div>
+    <div class="card">2026年2月8日｜衆院選に15〜30人擁立</div>
+  </div>
+
+  <div class="nav">
+    <button class="secondary" onclick="prevPage()">◀ 戻る</button>
+    <button onclick="nextPage()">次へ ▶</button>
+  </div>
+</section>
+
+<!-- PAGE 3 -->
+<section class="page" id="page-3">
+  <div>
+    <h2>基本政策</h2>
+    <div class="card">消費税廃止（一択）</div>
+    <div class="card">反グローバリズム・真の独立国家</div>
+    <div class="card">日米地位協定 抜本改定</div>
+    <div class="card">核廃絶</div>
+    <div class="card">ワクチン即時中止・被害者救済</div>
+    <div class="card">責任ある積極財政</div>
+  </div>
+
+  <div class="nav">
+    <button class="secondary" onclick="prevPage()">◀ 戻る</button>
+    <button onclick="alert('ここから候補者ページ等に拡張可能')">
+      完了
+    </button>
+  </div>
+</section>
+
+<script>
+  let current = 1;
+  const total = 3;
+
+  function showPage(n) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(`page-${n}`).classList.add('active');
+  }
+
+  function nextPage() {
+    if (current < total) {
+      current++;
+      showPage(current);
+    }
+  }
+
+  function prevPage() {
+    if (current > 1) {
+      current--;
+      showPage(current);
+    }
+  }
+</script>
+
+</body>
+</html>
