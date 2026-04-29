@@ -3,7 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>けんちゃん HTML/CSS/JavaScript プレビュー</title>
+  <title>k-nifty.github.io</title>
+  <meta name="description" content="">
+  <meta property="og:title" content="k-nifty.github.io">
+  <meta property="og:description" content="">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://k-nifty.github.io/mysite2/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="k-nifty.github.io">
+  <meta name="twitter:description" content="">
   <style>
     :root {
       --bg1: #0f172a;
@@ -40,109 +48,21 @@
       box-shadow: 0 28px 90px rgba(0,0,0,.35);
       position: relative;
     }
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      color: var(--muted);
-      font-size: 14px;
-      background: rgba(255,255,255,.08);
-    }
-    .dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 18px var(--accent);
-    }
-    h1 {
-      font-size: clamp(34px, 7vw, 74px);
-      line-height: .95;
-      margin: 24px 0 18px;
-      letter-spacing: -0.06em;
-    }
-    .grad {
-      background: linear-gradient(90deg, var(--accent), var(--accent2), #f472b6);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    p {
-      color: var(--muted);
-      font-size: 18px;
-      line-height: 1.8;
-      margin: 0 0 26px;
-      max-width: 720px;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin: 28px 0;
-    }
-    .mini {
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      padding: 18px;
-      background: rgba(255,255,255,.07);
-    }
-    .mini strong {
-      display: block;
-      font-size: 22px;
-      margin-bottom: 6px;
-    }
-    .mini span {
-      color: var(--muted);
-      font-size: 14px;
-    }
-    button {
-      appearance: none;
-      border: 0;
-      cursor: pointer;
-      border-radius: 18px;
-      padding: 16px 22px;
-      font-weight: 800;
-      font-size: 16px;
-      color: #06111f;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      box-shadow: 0 18px 40px rgba(56,189,248,.25);
-      transition: transform .18s ease, box-shadow .18s ease;
-    }
-    button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 22px 48px rgba(167,139,250,.30);
-    }
-    .message {
-      margin-top: 18px;
-      color: #e0f2fe;
-      min-height: 28px;
-      font-size: 17px;
-      font-weight: 700;
-    }
-    .orb {
-      position: absolute;
-      width: 130px;
-      height: 130px;
-      right: -36px;
-      top: -36px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, rgba(56,189,248,.9), rgba(167,139,250,.8));
-      filter: blur(.2px);
-      animation: float 4s ease-in-out infinite;
-      opacity: .78;
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(14px) rotate(18deg); }
-    }
-    @media (max-width: 720px) {
-      .wrap { padding: 24px; border-radius: 22px; }
-      .grid { grid-template-columns: 1fr; }
-      .orb { width: 90px; height: 90px; right: -24px; top: -24px; }
-    }
+    .badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: 14px; background: rgba(255,255,255,.08); }
+    .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 18px var(--accent); }
+    h1 { font-size: clamp(34px, 7vw, 74px); line-height: .95; margin: 24px 0 18px; letter-spacing: -0.06em; }
+    .grad { background: linear-gradient(90deg, var(--accent), var(--accent2), #f472b6); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    p { color: var(--muted); font-size: 18px; line-height: 1.8; margin: 0 0 26px; max-width: 720px; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 28px 0; }
+    .mini { border: 1px solid var(--line); border-radius: 20px; padding: 18px; background: rgba(255,255,255,.07); }
+    .mini strong { display: block; font-size: 22px; margin-bottom: 6px; }
+    .mini span { color: var(--muted); font-size: 14px; }
+    button { appearance: none; border: 0; cursor: pointer; border-radius: 18px; padding: 16px 22px; font-weight: 800; font-size: 16px; color: #06111f; background: linear-gradient(90deg, var(--accent), var(--accent2)); box-shadow: 0 18px 40px rgba(56,189,248,.25); transition: transform .18s ease, box-shadow .18s ease; }
+    button:hover { transform: translateY(-2px); box-shadow: 0 22px 48px rgba(167,139,250,.30); }
+    .message { margin-top: 18px; color: #e0f2fe; min-height: 28px; font-size: 17px; font-weight: 700; }
+    .orb { position: absolute; width: 130px; height: 130px; right: -36px; top: -36px; border-radius: 50%; background: linear-gradient(135deg, rgba(56,189,248,.9), rgba(167,139,250,.8)); filter: blur(.2px); animation: float 4s ease-in-out infinite; opacity: .78; }
+    @keyframes float { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(14px) rotate(18deg); } }
+    @media (max-width: 720px) { .wrap { padding: 24px; border-radius: 22px; } .grid { grid-template-columns: 1fr; } .orb { width: 90px; height: 90px; right: -24px; top: -24px; } }
   </style>
 </head>
 <body>
@@ -150,26 +70,19 @@
     <div class="orb" aria-hidden="true"></div>
     <div class="badge"><span class="dot"></span> HTML / CSS / JavaScript preview</div>
     <h1>けんちゃんの<br><span class="grad">Webプレビュー完成</span></h1>
-    <p>
-      これはChatGPTで作ったHTML・CSS・JavaScriptのサンプルです。
-      GitHubに保存されているので、GitHub Pagesを有効化するとURLで公開できます。
-    </p>
-
+    <p>これはChatGPTで作ったHTML・CSS・JavaScriptのサンプルです。GitHubに保存されています。</p>
     <section class="grid" aria-label="できること">
       <div class="mini"><strong>HTML</strong><span>ページ構造を作る</span></div>
       <div class="mini"><strong>CSS</strong><span>見た目を整える</span></div>
       <div class="mini"><strong>JS</strong><span>動きをつける</span></div>
     </section>
-
     <button id="action">押して動作確認</button>
     <div id="message" class="message"></div>
   </main>
-
   <script>
     const button = document.getElementById("action");
     const message = document.getElementById("message");
     let count = 0;
-
     button.addEventListener("click", () => {
       count += 1;
       message.textContent = `JavaScript動作OK。ボタンを ${count} 回押しました。`;
