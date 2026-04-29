@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>さくら、もう一度の約束 | Web Story</title>
+  <link rel="stylesheet" href="sakura-promise-poster.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor-light" aria-hidden="true"></div>
+
+  <header class="hero" id="top">
+    <nav class="nav" aria-label="ページ内ナビゲーション">
+      <a href="#top" class="brand">SAKURA PROMISE</a>
+      <div class="nav-links">
+        <a href="#story">Story</a>
+        <a href="#memory">Memory</a>
+        <a href="#letter">Letter</a>
+      </div>
+    </nav>
+
+    <div class="petal-field" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <section class="hero-grid">
+      <div class="hero-copy reveal">
+        <p class="kicker">春の帰り道をめぐる、小さな映画のようなページ</p>
+        <h1>さくら、<br>もう一度の約束</h1>
+        <p class="lead">夕暮れの街に桜が咲くたび、忘れたはずの帰り道が胸の奥で灯りはじめる。これは、別れではなく、もう一度歩き出すための物語。</p>
+        <div class="hero-actions">
+          <a href="#story" class="button primary">物語を開く</a>
+          <button class="button ghost" id="moodBtn" type="button">夜明けに切り替え</button>
+        </div>
+      </div>
+
+      <figure class="poster-card reveal" aria-label="桜並木と夕暮れの街を描いたポスター画像">
+        <img src="340209AD-D765-4EFC-A9A0-D71BF7B5A0B4.jpeg" alt="桜並木のある夕暮れの街並みを背景にした映画ポスター風画像" />
+        <figcaption>あの日の帰り道が、未来をつないでいた。</figcaption>
+      </figure>
+    </section>
+  </header>
+
+  <main>
+    <section class="intro reveal" id="story">
+      <p class="section-label">STORY</p>
+      <h2>信号が青に変わる前、彼女は一通の手紙を思い出した。</h2>
+      <p>桜の季節になると、街は少しだけ過去に近づく。電線の影、夕陽を受けたマンション、風に流れる花びら。主人公の紬は、十年前に交わした「また、帰り道で会おうね」という約束を胸に、かつての通学路へ戻ってくる。</p>
+    </section>
+
+    <section class="timeline" id="memory">
+      <article class="memory-card reveal">
+        <span class="number">01</span>
+        <h3>桜並木</h3>
+        <p>満開の枝の下で、二人は未来の話ばかりしていた。何者にもなっていない自分たちを、なぜか信じられた春。</p>
+      </article>
+      <article class="memory-card reveal">
+        <span class="number">02</span>
+        <h3>夕暮れの道路</h3>
+        <p>車の音、遠くの踏切、冷たい風。街のざわめきの中で、言えなかった言葉だけがずっと残っていた。</p>
+      </article>
+      <article class="memory-card reveal">
+        <span class="number">03</span>
+        <h3>もう一度の約束</h3>
+        <p>再会は奇跡ではなく、歩き続けた人だけに訪れる小さな到着点。春は終わりではなく、続きの合図だった。</p>
+      </article>
+    </section>
+
+    <section class="cinema reveal">
+      <div>
+        <p class="section-label">SCENE DESIGN</p>
+        <h2>写真から広げた世界観</h2>
+        <p>ページ全体は、夕暮れの橙、桜の淡い桃色、道路の青みがかった影を基調にしています。スクロールで記憶がほどけ、花びらが流れ、最後に手紙が開く構成です。</p>
+      </div>
+      <div class="quote-panel">
+        <p>「あの道で、君と夢を語った。<br>それは、終わりじゃなくて、はじまりだったんだ。」</p>
+      </div>
+    </section>
+
+    <section class="letter reveal" id="letter">
+      <p class="section-label">LETTER</p>
+      <h2>春から届いた手紙</h2>
+      <button id="letterBtn" class="button primary" type="button">手紙を読む</button>
+      <p id="letterText" class="letter-text" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <footer>
+    <a href="#top">ページ上部へ戻る</a>
+    <p>Created from one spring poster image.</p>
+  </footer>
+
+  <script src="sakura-promise-poster.js"></script>
+</body>
+</html>
