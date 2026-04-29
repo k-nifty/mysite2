@@ -3,92 +3,42 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>k-nifty.github.io</title>
-  <meta name="description" content="">
-  <meta property="og:title" content="k-nifty.github.io">
-  <meta property="og:description" content="">
+  <title>さくらと小さなたこ焼きの約束</title>
+  <meta name="description" content="桜の帰り道と、富士山を見つめる小さなたこ焼きから生まれた春の物語サイト。">
+  <meta property="og:title" content="さくらと小さなたこ焼きの約束">
+  <meta property="og:description" content="あの道で交わした約束を、春がもう一度連れてくる。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://k-nifty.github.io/mysite2/">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="k-nifty.github.io">
-  <meta name="twitter:description" content="">
   <style>
-    :root {
-      --bg1: #0f172a;
-      --bg2: #1e293b;
-      --card: rgba(255,255,255,.10);
-      --line: rgba(255,255,255,.18);
-      --text: #f8fafc;
-      --muted: #cbd5e1;
-      --accent: #38bdf8;
-      --accent2: #a78bfa;
+    :root{
+      --ink:#3b2b2b; --muted:#7b6662; --paper:#fff7ef; --sakura:#f4a7b9; --sun:#f4b36a; --sky:#6f9ec7; --deep:#172236;
     }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at top left, rgba(56,189,248,.34), transparent 36%),
-        radial-gradient(circle at bottom right, rgba(167,139,250,.34), transparent 34%),
-        linear-gradient(135deg, var(--bg1), var(--bg2));
-      display: grid;
-      place-items: center;
-      padding: 24px;
-      overflow-x: hidden;
-    }
-    .wrap {
-      width: min(920px, 100%);
-      border: 1px solid var(--line);
-      background: var(--card);
-      backdrop-filter: blur(16px);
-      border-radius: 28px;
-      padding: 34px;
-      box-shadow: 0 28px 90px rgba(0,0,0,.35);
-      position: relative;
-    }
-    .badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: 14px; background: rgba(255,255,255,.08); }
-    .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 18px var(--accent); }
-    h1 { font-size: clamp(34px, 7vw, 74px); line-height: .95; margin: 24px 0 18px; letter-spacing: -0.06em; }
-    .grad { background: linear-gradient(90deg, var(--accent), var(--accent2), #f472b6); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    p { color: var(--muted); font-size: 18px; line-height: 1.8; margin: 0 0 26px; max-width: 720px; }
-    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 28px 0; }
-    .mini { border: 1px solid var(--line); border-radius: 20px; padding: 18px; background: rgba(255,255,255,.07); }
-    .mini strong { display: block; font-size: 22px; margin-bottom: 6px; }
-    .mini span { color: var(--muted); font-size: 14px; }
-    button { appearance: none; border: 0; cursor: pointer; border-radius: 18px; padding: 16px 22px; font-weight: 800; font-size: 16px; color: #06111f; background: linear-gradient(90deg, var(--accent), var(--accent2)); box-shadow: 0 18px 40px rgba(56,189,248,.25); transition: transform .18s ease, box-shadow .18s ease; }
-    button:hover { transform: translateY(-2px); box-shadow: 0 22px 48px rgba(167,139,250,.30); }
-    .message { margin-top: 18px; color: #e0f2fe; min-height: 28px; font-size: 17px; font-weight: 700; }
-    .orb { position: absolute; width: 130px; height: 130px; right: -36px; top: -36px; border-radius: 50%; background: linear-gradient(135deg, rgba(56,189,248,.9), rgba(167,139,250,.8)); filter: blur(.2px); animation: float 4s ease-in-out infinite; opacity: .78; }
-    @keyframes float { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(14px) rotate(18deg); } }
-    @media (max-width: 720px) { .wrap { padding: 24px; border-radius: 22px; } .grid { grid-template-columns: 1fr; } .orb { width: 90px; height: 90px; right: -24px; top: -24px; } }
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;font-family:ui-serif,"Hiragino Mincho ProN","Yu Mincho",serif;color:var(--ink);background:linear-gradient(180deg,#dcecff 0%,#fff1e6 42%,#2b2430 100%);overflow-x:hidden}
+    .petals{position:fixed;inset:0;pointer-events:none;z-index:3;overflow:hidden}.petals span{position:absolute;top:-8vh;width:14px;height:9px;border-radius:80% 0 80% 0;background:rgba(244,167,185,.75);filter:blur(.2px);animation:fall linear infinite}.petals span:nth-child(1){left:8%;animation-duration:11s}.petals span:nth-child(2){left:18%;animation-duration:14s;animation-delay:2s}.petals span:nth-child(3){left:31%;animation-duration:10s;animation-delay:4s}.petals span:nth-child(4){left:46%;animation-duration:16s;animation-delay:1s}.petals span:nth-child(5){left:61%;animation-duration:12s;animation-delay:3s}.petals span:nth-child(6){left:76%;animation-duration:15s;animation-delay:5s}.petals span:nth-child(7){left:91%;animation-duration:13s;animation-delay:1.5s}@keyframes fall{to{transform:translateY(112vh) translateX(80px) rotate(540deg)}}
+    header{min-height:100vh;display:grid;place-items:center;padding:28px;position:relative;background:radial-gradient(circle at 18% 24%,rgba(255,220,176,.85),transparent 22%),linear-gradient(120deg,rgba(20,36,58,.18),rgba(255,255,255,.15)),url('D49456F5-E805-4C83-AE9D-FBE341C037E3.jpeg') center/cover no-repeat}.veil{position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,247,239,.92),rgba(255,247,239,.48),rgba(20,25,38,.22))}.hero{position:relative;z-index:1;width:min(980px,100%);padding:44px;border:1px solid rgba(255,255,255,.55);border-radius:34px;background:rgba(255,247,239,.62);backdrop-filter:blur(12px);box-shadow:0 30px 100px rgba(35,22,18,.24)}
+    .eyebrow{letter-spacing:.22em;color:#a75868;font-weight:700}.title{font-size:clamp(42px,8vw,96px);line-height:1.02;margin:18px 0 20px;font-weight:500}.lead{font-size:clamp(17px,2.2vw,24px);line-height:2;max-width:760px;color:#5c4744}.cta{display:inline-block;margin-top:18px;padding:14px 22px;border-radius:999px;background:var(--deep);color:#fff;text-decoration:none;box-shadow:0 16px 42px rgba(23,34,54,.28)}
+    section{padding:90px 24px}.card{width:min(980px,100%);margin:auto;border-radius:32px;background:rgba(255,247,239,.88);box-shadow:0 24px 80px rgba(58,40,36,.18);padding:clamp(26px,5vw,56px)}h2{font-size:clamp(30px,5vw,56px);font-weight:500;margin:0 0 22px}.story p{font-size:18px;line-height:2.25;color:#5c4744}.split{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}.photo{min-height:430px;border-radius:30px;background:url('1323C2AB-B8EA-4096-AECE-0AFC04B3CB11.jpeg') center/cover no-repeat;box-shadow:inset 0 0 0 1px rgba(255,255,255,.55),0 22px 60px rgba(31,24,30,.25)}.note{font-size:22px;line-height:2;color:#4c3937}.chapters{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.chapter{padding:24px;border-radius:24px;background:linear-gradient(180deg,#fffaf5,#ffe9df);border:1px solid rgba(165,91,76,.18)}.chapter b{color:#a75868}.chapter p{line-height:1.9;color:#705b57}.ending{min-height:80vh;display:grid;place-items:center;text-align:center;color:#fff;background:linear-gradient(rgba(23,34,54,.42),rgba(23,34,54,.78)),url('D49456F5-E805-4C83-AE9D-FBE341C037E3.jpeg') center/cover fixed}.ending .box{width:min(900px,92%);padding:42px;border-radius:32px;background:rgba(23,34,54,.42);border:1px solid rgba(255,255,255,.24);backdrop-filter:blur(10px)}.ending p{font-size:22px;line-height:2}.button{border:0;border-radius:999px;padding:14px 22px;font-weight:700;background:#fff;color:var(--deep);cursor:pointer}.secret{margin-top:18px;min-height:30px;font-size:18px;color:#ffe3eb}@media(max-width:760px){.hero{padding:28px}.split,.chapters{grid-template-columns:1fr}.photo{min-height:340px}section{padding:64px 18px}}
   </style>
 </head>
 <body>
-  <main class="wrap">
-    <div class="orb" aria-hidden="true"></div>
-    <div class="badge"><span class="dot"></span> HTML / CSS / JavaScript preview</div>
-    <h1>けんちゃんの<br><span class="grad">Webプレビュー完成</span></h1>
-    <p>これはChatGPTで作ったHTML・CSS・JavaScriptのサンプルです。GitHubに保存されています。</p>
-    <section class="grid" aria-label="できること">
-      <div class="mini"><strong>HTML</strong><span>ページ構造を作る</span></div>
-      <div class="mini"><strong>CSS</strong><span>見た目を整える</span></div>
-      <div class="mini"><strong>JS</strong><span>動きをつける</span></div>
-    </section>
-    <button id="action">押して動作確認</button>
-    <div id="message" class="message"></div>
-  </main>
+  <div class="petals" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  <header>
+    <div class="veil"></div>
+    <div class="hero">
+      <div class="eyebrow">春・帰り道・小さな約束</div>
+      <h1 class="title">さくらと、<br>小さなたこ焼きの約束</h1>
+      <p class="lead">夕暮れの橋の上で、富士山を見つめていた小さなたこ焼き。彼が探していたのは、春になるたび思い出す、あの桜並木の帰り道でした。</p>
+      <a class="cta" href="#story">物語を読む</a>
+    </div>
+  </header>
+  <section id="story" class="story"><div class="card split"><div class="photo" aria-label="富士山と小さなたこ焼きのイメージ"></div><div><h2>第一章<br>夕焼けの橋</h2><p>たこ焼きの名前は、まる。ソースの香りをまとった小さな旅人です。橋の向こうに富士山が見える夕方、まるは風に舞う桜の花びらを見つけました。</p><p>花びらには、かすかな記憶がありました。昔、桜の道で交わされた「また帰り道で会おうね」という約束です。</p></div></div></section>
+  <section class="story"><div class="card"><h2>第二章<br>桜の道が覚えていたこと</h2><p>町の桜並木は、毎年同じように咲いているようで、ほんとうは少しずつ違う春を見ています。信号の音、遠くの電車、夕方の空、誰かの足音。まるは転がるのではなく、ゆっくり弾むように進みました。</p><p>そして気づきます。約束は、過去に戻るためのものではありません。明日へ歩き出すために、心の奥で光っているものなのだと。</p></div></section>
+  <section><div class="card"><h2>三つの場面</h2><div class="chapters"><div class="chapter"><b>Scene 1</b><p>富士山を背景に、まるが夕陽を受けて小さく息をのむ。</p></div><div class="chapter"><b>Scene 2</b><p>桜並木の帰り道で、花びらが古い約束を運んでくる。</p></div><div class="chapter"><b>Scene 3</b><p>街の灯りがともる頃、まるは新しい誰かの帰り道を照らす。</p></div></div></div></section>
+  <section class="ending"><div class="box"><h2>もう一度、帰り道で。</h2><p>春は、終わった物語を連れてくるのではなく、続きを書くためにやってくる。</p><button class="button" id="btn">まるからの手紙を開く</button><div id="secret" class="secret"></div></div></section>
   <script>
-    const button = document.getElementById("action");
-    const message = document.getElementById("message");
-    let count = 0;
-    button.addEventListener("click", () => {
-      count += 1;
-      message.textContent = `JavaScript動作OK。ボタンを ${count} 回押しました。`;
-      document.documentElement.style.setProperty("--accent", count % 2 ? "#22c55e" : "#38bdf8");
-      document.documentElement.style.setProperty("--accent2", count % 2 ? "#facc15" : "#a78bfa");
-    });
+    const lines=["また、帰り道で会おうね。","桜が咲いたら、ぼくはきっと思い出す。","明日も、いい天気になりますように。"];
+    let i=0;document.getElementById('btn').addEventListener('click',()=>{document.getElementById('secret').textContent=lines[i%lines.length];i++;});
   </script>
 </body>
 </html>
