@@ -9,7 +9,7 @@ body{margin:0;font-family: "Yu Mincho","Hiragino Mincho ProN",serif;background:l
 .nav{display:flex;justify-content:space-between;align-items:center;padding:16px 24px;color:#fff}
 .nav a{color:#fff;text-decoration:none;margin-left:16px}
 
-.hero{min-height:100vh;background:url('340209AD-D765-4EFC-A9A0-D71BF7B5A0B4.jpeg') center/cover fixed;position:relative;color:#fff}
+.hero{min-height:100vh;background:url('https://drive.google.com/uc?export=view&id=1kN4HS09YppDmGJgr4KT29bGrA-YwZF-6') center/cover fixed;position:relative;color:#fff}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.6))}
 .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:40px;padding:80px}
 .hero-copy h1{font-size:64px;margin:0}
@@ -33,4 +33,4 @@ footer{padding:40px;text-align:center;color:#fff}
 .reveal{opacity:0;transform:translateY(30px);transition:1s}
 .reveal.show{opacity:1;transform:none}
 
-@media(max-width:800px){.hero-grid{grid-template-columns:1fr}.timeline{grid-template-columns:1fr}}
+@media(max-width:800px){.hero-grid{grid-template-columns:1fr}.timeline{grid-template-columns:1fr}.hero{background-attachment:scroll}}
