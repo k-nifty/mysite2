@@ -1,140 +1,181 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ゆうこく連合</title>
-
-<style>
-  body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Noto Sans JP", sans-serif;
-    background: #0f1e2d;
-    color: white;
-    overflow: hidden; /* ← 縦スクロール殺す */
-  }
-
-  .page {
-    width: 100vw;
-    height: 100vh;
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 32px 24px;
-    box-sizing: border-box;
-  }
-
-  .page.active {
-    display: flex;
-  }
-
-  h1, h2 {
-    margin-top: 0;
-  }
-
-  .center {
-    text-align: center;
-  }
-
-  .nav {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  button {
-    background: #1f4fd8;
-    border: none;
-    color: white;
-    padding: 14px 22px;
-    font-size: 16px;
-    border-radius: 8px;
-  }
-
-  button.secondary {
-    background: #555;
-  }
-
-  .card {
-    background: rgba(255,255,255,0.08);
-    padding: 16px;
-    border-radius: 8px;
-    margin-bottom: 12px;
-  }
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>けんちゃん HTML/CSS/JavaScript プレビュー</title>
+  <style>
+    :root {
+      --bg1: #0f172a;
+      --bg2: #1e293b;
+      --card: rgba(255,255,255,.10);
+      --line: rgba(255,255,255,.18);
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --accent: #38bdf8;
+      --accent2: #a78bfa;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(56,189,248,.34), transparent 36%),
+        radial-gradient(circle at bottom right, rgba(167,139,250,.34), transparent 34%),
+        linear-gradient(135deg, var(--bg1), var(--bg2));
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      overflow-x: hidden;
+    }
+    .wrap {
+      width: min(920px, 100%);
+      border: 1px solid var(--line);
+      background: var(--card);
+      backdrop-filter: blur(16px);
+      border-radius: 28px;
+      padding: 34px;
+      box-shadow: 0 28px 90px rgba(0,0,0,.35);
+      position: relative;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 14px;
+      background: rgba(255,255,255,.08);
+    }
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 18px var(--accent);
+    }
+    h1 {
+      font-size: clamp(34px, 7vw, 74px);
+      line-height: .95;
+      margin: 24px 0 18px;
+      letter-spacing: -0.06em;
+    }
+    .grad {
+      background: linear-gradient(90deg, var(--accent), var(--accent2), #f472b6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    p {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.8;
+      margin: 0 0 26px;
+      max-width: 720px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 28px 0;
+    }
+    .mini {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 18px;
+      background: rgba(255,255,255,.07);
+    }
+    .mini strong {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 6px;
+    }
+    .mini span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    button {
+      appearance: none;
+      border: 0;
+      cursor: pointer;
+      border-radius: 18px;
+      padding: 16px 22px;
+      font-weight: 800;
+      font-size: 16px;
+      color: #06111f;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      box-shadow: 0 18px 40px rgba(56,189,248,.25);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 22px 48px rgba(167,139,250,.30);
+    }
+    .message {
+      margin-top: 18px;
+      color: #e0f2fe;
+      min-height: 28px;
+      font-size: 17px;
+      font-weight: 700;
+    }
+    .orb {
+      position: absolute;
+      width: 130px;
+      height: 130px;
+      right: -36px;
+      top: -36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(56,189,248,.9), rgba(167,139,250,.8));
+      filter: blur(.2px);
+      animation: float 4s ease-in-out infinite;
+      opacity: .78;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(14px) rotate(18deg); }
+    }
+    @media (max-width: 720px) {
+      .wrap { padding: 24px; border-radius: 22px; }
+      .grid { grid-template-columns: 1fr; }
+      .orb { width: 90px; height: 90px; right: -24px; top: -24px; }
+    }
+  </style>
 </head>
-
 <body>
+  <main class="wrap">
+    <div class="orb" aria-hidden="true"></div>
+    <div class="badge"><span class="dot"></span> HTML / CSS / JavaScript preview</div>
+    <h1>けんちゃんの<br><span class="grad">Webプレビュー完成</span></h1>
+    <p>
+      これはChatGPTで作ったHTML・CSS・JavaScriptのサンプルです。
+      GitHubに保存されているので、GitHub Pagesを有効化するとURLで公開できます。
+    </p>
 
-<!-- PAGE 1 -->
-<section class="page active" id="page-1">
-  <div class="center">
-    <h1>ゆうこく連合</h1>
-    <p>日本独立・日本再興・日本救世</p>
-  </div>
+    <section class="grid" aria-label="できること">
+      <div class="mini"><strong>HTML</strong><span>ページ構造を作る</span></div>
+      <div class="mini"><strong>CSS</strong><span>見た目を整える</span></div>
+      <div class="mini"><strong>JS</strong><span>動きをつける</span></div>
+    </section>
 
-  <div class="center">
-    <button onclick="nextPage()">次へ ▶</button>
-  </div>
-</section>
+    <button id="action">押して動作確認</button>
+    <div id="message" class="message"></div>
+  </main>
 
-<!-- PAGE 2 -->
-<section class="page" id="page-2">
-  <div>
-    <h2>主な経緯</h2>
-    <div class="card">2025年｜原口一博を中心に設立</div>
-    <div class="card">2026年1月｜河村たかしらと合流、政党要件達成</div>
-    <div class="card">2026年2月8日｜衆院選に15〜30人擁立</div>
-  </div>
+  <script>
+    const button = document.getElementById("action");
+    const message = document.getElementById("message");
+    let count = 0;
 
-  <div class="nav">
-    <button class="secondary" onclick="prevPage()">◀ 戻る</button>
-    <button onclick="nextPage()">次へ ▶</button>
-  </div>
-</section>
-
-<!-- PAGE 3 -->
-<section class="page" id="page-3">
-  <div>
-    <h2>基本政策</h2>
-    <div class="card">消費税廃止（一択）</div>
-    <div class="card">反グローバリズム・真の独立国家</div>
-    <div class="card">日米地位協定 抜本改定</div>
-    <div class="card">核廃絶</div>
-    <div class="card">ワクチン即時中止・被害者救済</div>
-    <div class="card">責任ある積極財政</div>
-  </div>
-
-  <div class="nav">
-    <button class="secondary" onclick="prevPage()">◀ 戻る</button>
-    <button onclick="alert('ここから候補者ページ等に拡張可能')">
-      完了
-    </button>
-  </div>
-</section>
-
-<script>
-  let current = 1;
-  const total = 3;
-
-  function showPage(n) {
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.getElementById(`page-${n}`).classList.add('active');
-  }
-
-  function nextPage() {
-    if (current < total) {
-      current++;
-      showPage(current);
-    }
-  }
-
-  function prevPage() {
-    if (current > 1) {
-      current--;
-      showPage(current);
-    }
-  }
-</script>
-
+    button.addEventListener("click", () => {
+      count += 1;
+      message.textContent = `JavaScript動作OK。ボタンを ${count} 回押しました。`;
+      document.documentElement.style.setProperty("--accent", count % 2 ? "#22c55e" : "#38bdf8");
+      document.documentElement.style.setProperty("--accent2", count % 2 ? "#facc15" : "#a78bfa");
+    });
+  </script>
 </body>
 </html>
