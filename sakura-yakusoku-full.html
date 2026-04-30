@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>桜と約束の道</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;font-family:'Yu Mincho','Hiragino Mincho ProN',serif;color:#33272a;background:linear-gradient(#ffe8ee,#fffaf5 45%,#eaded8);line-height:2}.hero{min-height:92vh;display:grid;place-items:end center;padding:24px;background:radial-gradient(circle at 20% 18%,#fff 0 3px,transparent 4px),radial-gradient(circle at 78% 28%,#fff 0 3px,transparent 4px),linear-gradient(180deg,rgba(255,225,233,.76),rgba(90,49,58,.78)),linear-gradient(120deg,#ffc7d5,#fff2ea 48%,#6d5964);background-size:92px 92px,130px 130px,auto,auto;position:relative;overflow:hidden}.hero:before{content:'';position:absolute;left:-8%;right:-8%;bottom:-7%;height:34vh;background:linear-gradient(180deg,transparent,rgba(61,39,46,.58));filter:blur(7px)}.card{position:relative;width:min(920px,100%);margin:0 auto 6vh;padding:28px clamp(20px,5vw,54px);border-radius:28px;background:rgba(39,28,32,.58);color:white;box-shadow:0 30px 90px rgba(0,0,0,.32);backdrop-filter:blur(10px)}.k{letter-spacing:.25em;color:#ffd9e1;font-size:.88rem}h1{font-size:clamp(2.5rem,10vw,6rem);line-height:1.04;margin:.1em 0 .24em;font-weight:400;letter-spacing:.08em}.lead{max-width:720px;margin:0 0 20px;color:#fff4f5;font-size:clamp(1rem,2.3vw,1.28rem)}.music{display:flex;gap:12px;flex-wrap:wrap;align-items:center;background:rgba(255,255,255,.14);border-radius:18px;padding:14px}button{border:0;border-radius:999px;padding:12px 18px;font-weight:700;cursor:pointer;background:linear-gradient(135deg,#fff,#ffd8e0);color:#3b242a;font-family:inherit}audio{width:100%;margin-top:8px}.warn{font-family:system-ui,sans-serif;font-size:.9rem;color:#fff7bc}main{width:min(850px,calc(100% - 32px));margin:-34px auto 64px;position:relative;background:rgba(255,250,245,.95);border:1px solid rgba(217,133,150,.28);border-radius:28px;box-shadow:0 26px 80px rgba(54,28,34,.22);overflow:hidden}.head{text-align:center;padding:36px 22px 8px}.head small{color:#c46f83;letter-spacing:.22em}h2{font-size:clamp(1.6rem,5vw,2.4rem);font-weight:400;line-height:1.5;margin:12px 0}.story{padding:10px clamp(22px,6vw,70px) 42px}.story p{font-size:clamp(1.02rem,2.4vw,1.15rem);text-align:justify;margin:0 0 1.4em}footer{text-align:center;color:#8d7478;padding:0 20px 36px;font-family:system-ui,sans-serif;font-size:.84rem}
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <div class="card">
+      <div class="k">春・帰り道・再会</div>
+      <h1>桜と<br>約束の道</h1>
+      <p class="lead">桜の並木道から生まれた短編小説。BGMは短縮版ではなく、同じリポジトリ内の full-length mp3 を読み込む設計です。</p>
+      <div class="music">
+        <button id="play">BGMを再生</button>
+        <span id="state">自動再生制限を避けるため、ボタンから再生します。</span>
+        <audio id="bgm" controls loop preload="auto">
+          <source src="./bgm.mp3" type="audio/mpeg">
+        </audio>
+        <div id="warn" class="warn"></div>
+      </div>
+    </div>
+  </section>
+  <main>
+    <div class="head"><small>SHORT NOVEL</small><h2>もう一度、春の場所で。</h2></div>
+    <div class="story">
+      <p>春の匂いが戻るころ、僕はふたたび故郷の坂道に立っていた。桜並木の向こうには古いバス停があり、夕方の光だけが、あの日と同じ角度で道を照らしていた。</p>
+      <p>十年前、僕はこの道で一人の少女と約束をした。「大人になっても、桜が咲いたらここで会おう」。幼い言葉だったのに、その声だけは都会の騒音の中でも消えなかった。</p>
+      <p>風が吹くたび、花びらが道路を横切った。まるで時間のページを一枚ずつめくるように、忘れたはずの記憶が戻ってくる。</p>
+      <p>そのとき、桜の奥から一人の女性が歩いてきた。白い服の肩に花びらを乗せて、彼女は昔と同じように少しだけ首をかしげた。</p>
+      <p>「久しぶり」彼女はそう言った。たった一言なのに、長い年月の隙間をすべて埋めるような声だった。</p>
+      <p>夕暮れが町を淡い金色に染めるころ、彼女は桜を見上げて、「来年も、ここで」と言った。今度の約束は、過去に戻るためではない。未来へ帰ってくるための約束だった。</p>
+    </div>
+  </main>
+  <footer>GitHub Pages shareable story page</footer>
+  <script>
+    const audio = document.getElementById('bgm');
+    const button = document.getElementById('play');
+    const state = document.getElementById('state');
+    const warn = document.getElementById('warn');
+    audio.volume = 0.82;
+    audio.addEventListener('error', () => {
+      warn.textContent = 'bgm.mp3 が見つからないか、mp3として読み込めません。リポジトリ直下に full-length の bgm.mp3 を置いてください。';
+    });
+    button.addEventListener('click', async () => {
+      try {
+        if (audio.paused) {
+          await audio.play();
+          button.textContent = 'BGMを停止';
+          state.textContent = 'BGM再生中。もう一度押すと停止します。';
+        } else {
+          audio.pause();
+          button.textContent = 'BGMを再生';
+          state.textContent = '停止中。ボタンから再生できます。';
+        }
+      } catch (e) {
+        state.textContent = '再生できません。下のaudioの再生ボタンを押すか、bgm.mp3を確認してください。';
+      }
+    });
+  </script>
+</body>
+</html>
