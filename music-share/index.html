@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Music Share</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: radial-gradient(circle at top, #263154 0%, #111525 44%, #05070d 100%);
+      color: #fff;
+    }
+    .card {
+      width: min(92vw, 440px);
+      padding: 32px 24px;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.38);
+      text-align: center;
+      backdrop-filter: blur(14px);
+    }
+    h1 {
+      margin: 0 0 12px;
+      font-size: 28px;
+      letter-spacing: .04em;
+    }
+    p {
+      margin: 0 0 24px;
+      line-height: 1.7;
+      color: rgba(255,255,255,.78);
+    }
+    button {
+      width: 100%;
+      border: 0;
+      border-radius: 999px;
+      padding: 18px 20px;
+      font-size: 19px;
+      font-weight: 700;
+      color: #111525;
+      background: linear-gradient(135deg, #ffffff, #b7d4ff);
+      box-shadow: 0 12px 32px rgba(116, 161, 255, .35);
+      cursor: pointer;
+    }
+    button:active { transform: translateY(1px); }
+    .status {
+      margin-top: 18px;
+      min-height: 1.5em;
+      color: rgba(255,255,255,.72);
+      font-size: 14px;
+    }
+    .note {
+      margin-top: 18px;
+      font-size: 12px;
+      color: rgba(255,255,255,.55);
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>Music Share</h1>
+    <p>LINEなどでURL共有しやすい、音楽つきページです。スマホやPCの仕様上、音はボタンを押すと再生されます。</p>
+    <button id="playButton" type="button">音楽を再生 / 停止</button>
+    <div id="status" class="status">停止中</div>
+    <div class="note">音が出ない場合は、端末の音量・マナーモード・ブラウザの音声許可を確認してください。</div>
+  </main>
+
+  <script>
+    const playButton = document.getElementById('playButton');
+    const statusEl = document.getElementById('status');
+
+    let audioCtx;
+    let masterGain;
+    let timerIds = [];
+    let playing = false;
+
+    const melody = [
+      { note: 392.00, time: 0.00, length: 0.28 },
+      { note: 493.88, time: 0.32, length: 0.28 },
+      { note: 587.33, time: 0.64, length: 0.42 },
+      { note: 493.88, time: 1.12, length: 0.28 },
+      { note: 659.25, time: 1.44, length: 0.42 },
+      { note: 587.33, time: 1.92, length: 0.32 },
+      { note: 493.88, time: 2.28, length: 0.32 },
+      { note: 392.00, time: 2.64, length: 0.56 }
+    ];
+
+    function ensureAudio() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        masterGain = audioCtx.createGain();
+        masterGain.gain.value = 0.22;
+        masterGain.connect(audioCtx.destination);
+      }
+      return audioCtx.resume();
+    }
+
+    function playTone(freq, start, duration, type = 'sine') {
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = type;
+      osc.frequency.value = freq;
+      gain.gain.setValueAtTime(0.0001, start);
+      gain.gain.exponentialRampToValueAtTime(0.22, start + 0.03);
+      gain.gain.exponentialRampToValueAtTime(0.0001, start + duration);
+      osc.connect(gain).connect(masterGain);
+      osc.start(start);
+      osc.stop(start + duration + 0.03);
+    }
+
+    function scheduleLoop() {
+      if (!playing) return;
+      const now = audioCtx.currentTime;
+      melody.forEach(({ note, time, length }) => {
+        playTone(note, now + time, length, 'triangle');
+        playTone(note / 2, now + time, length * 1.05, 'sine');
+      });
+      const next = window.setTimeout(scheduleLoop, 3200);
+      timerIds.push(next);
+    }
+
+    async function startMusic() {
+      await ensureAudio();
+      playing = true;
+      statusEl.textContent = '再生中';
+      scheduleLoop();
+    }
+
+    function stopMusic() {
+      playing = false;
+      timerIds.forEach(clearTimeout);
+      timerIds = [];
+      if (masterGain && audioCtx) {
+        masterGain.gain.cancelScheduledValues(audioCtx.currentTime);
+        masterGain.gain.setTargetAtTime(0.0001, audioCtx.currentTime, 0.05);
+        window.setTimeout(() => {
+          if (masterGain) masterGain.gain.value = 0.22;
+        }, 180);
+      }
+      statusEl.textContent = '停止中';
+    }
+
+    playButton.addEventListener('click', async () => {
+      try {
+        if (playing) {
+          stopMusic();
+        } else {
+          await startMusic();
+        }
+      } catch (error) {
+        statusEl.textContent = '音声の開始に失敗しました。ブラウザ設定を確認してください。';
+        console.error(error);
+      }
+    });
+  </script>
+</body>
+</html>
